@@ -25,8 +25,10 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         Folder myApp = new Folder("my_app");
+        folderRepository.save(myApp);
 
         File mainJS = new File("main", "javascript", 512 , myApp);
+        fileRepository.save(mainJS);
 
 
     }
