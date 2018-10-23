@@ -2,6 +2,7 @@ package com.codeclan.example.system.components;
 
 import com.codeclan.example.system.models.File;
 import com.codeclan.example.system.models.Folder;
+import com.codeclan.example.system.models.User;
 import com.codeclan.example.system.repositories.FileRepository;
 import com.codeclan.example.system.repositories.FolderRepository;
 import com.codeclan.example.system.repositories.UserRepository;
@@ -19,16 +20,29 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     FolderRepository folderRepository;
 
-//        @Autowired
-//        UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Folder myApp = new Folder("my_app");
+        User user1 = new User("John");
+        User user2 = new User("Kate");
+        userRepository.save(user1);
+        userRepository.save(user2);
+
+        Folder myApp = new Folder("my_app", user1);
         folderRepository.save(myApp);
 
         File mainJS = new File("main", "javascript", 512 , myApp);
+        File mainCSS = new File("style", "css", 16 , myApp);
         fileRepository.save(mainJS);
+        fileRepository.save(mainCSS);
+
+
+
+
+
+
 
 
     }
