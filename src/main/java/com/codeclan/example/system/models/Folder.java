@@ -17,16 +17,16 @@ public class Folder {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "user")
-    private User user;
+//    @Column(name = "user")
+//    private User user;
 
     @JsonIgnore
     @OneToMany(mappedBy = "folder")
     List<File> files;
 
-    public Folder(String name, User user) {
+    public Folder(String name/*, User user*/) {
         this.name = name;
-        this.user = user;
+//        this.user = user;
     }
 
     public Folder() {
@@ -48,13 +48,13 @@ public class Folder {
         this.name = name;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public List<File> getFiles() {
         return files;
